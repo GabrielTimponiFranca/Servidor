@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-
+from Consulta.SGR.Consumo.TrafoA.api.viewsets import trafoAViewSet
 
 router = routers.DefaultRouter()
+router.register(r'trafoA', trafoAViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'Consulta',
 ]
 
 MIDDLEWARE = [
@@ -78,9 +79,19 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    'dbGrandeRio': {
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'GrandeRio',
+        'HOST': '200.233.212.247',
+        'PORT': '1433',
+        'USER': 'sa',
+        'PASSWORD': 'CCO@123456',
+    },
 }
 
+# set this to False if you want to turn off pyodbc's connection pooling
+DATABASE_CONNECTION_POOLING = False
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
