@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Consulta',
+    'testCom',
+    'testRestPanda',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +89,18 @@ DATABASES = {
         'PORT': '1433',
         'USER': 'sa',
         'PASSWORD': 'CCO@123456',
+    },    
+    'dbTeste': {
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'Teste',
+        'HOST': '200.233.212.247',
+        'PORT': '1433',
+        'USER': 'sa',
+        'PASSWORD': 'CCO@123456',
+
+        'OPTIONS': {
+            'driver': 'ODBC Driver 13 for SQL Server',
+        },
     },
 }
 
