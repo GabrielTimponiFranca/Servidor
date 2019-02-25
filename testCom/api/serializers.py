@@ -4,4 +4,5 @@ from testCom.models import testCom
 class testComSerializer(ModelSerializer):
     class Meta:
         model = testCom
-        fields = ('Teste01', 'Teste02')
+        # fields = ('TimeStamp', 'Teste01', 'Teste02')
+        fields = '__all__'

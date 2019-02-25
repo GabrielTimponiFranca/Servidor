@@ -32,11 +32,13 @@ from django.urls import path
 from django.conf.urls import url, include
 from django.contrib import admin
 from testCom.views import raw_sql_query
+from Consulta.SGR.Consumo.TrafoA.api.viewsets import trafoAViewSet
 from rest_framework import routers
 from testCom.api.viewsets import testComViewSet
 
 router = routers.DefaultRouter()
 router.register(r'testCom', testComViewSet)
+router.register(r'trafoA', trafoAViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

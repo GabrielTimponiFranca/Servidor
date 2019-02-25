@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class testCom(models.Model):
-    TimeStamp = models.DateTimeField(db_column='TimeStamp', null=True, blank=True)
+    TimeStamp = models.DateTimeField(db_column='TimeStamp', primary_key=True)
     Teste01 = models.FloatField(db_column='Teste01')
     Teste02 = models.FloatField(db_column='Teste02')
 

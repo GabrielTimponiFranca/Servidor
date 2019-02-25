@@ -1,20 +1,17 @@
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.response import Response
+
 from testCom.models import testCom
 from .serializers import testComSerializer
 
 
-from django.shortcuts import render
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view
-from rest_framework.decorators import renderer_classes
-from rest_framework.renderers import JSONRenderer
-
-from testCom.consulta.querySQL import *
-
-consulta = consulta()
-
 class testComViewSet(ModelViewSet):
     #queryset = testCom.objects.using('dbTeste').all()
+    # queryset = testCom.objects.all()
     queryset = testCom.objects.using('dbTeste').all()
     serializer_class = testComSerializer
+
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = testComSerializer(list(queryset), many=True)
+        return Response(serializer.data)

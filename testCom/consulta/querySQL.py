@@ -8,15 +8,21 @@ class consulta(models.Manager):
         # with connection['dbTeste'].cursor() as cursor:
             # sql = ('SELECT * FROM [Teste2]')
             # result = pd.read_sql_query(sql, connection)
-            
+
         with connection.cursor() as cursor:
             try:
-                cursor.execute('SELECT * FROM [Teste2]')
+                cursor.execute('''
+                    SELECT [TimeStamp]
+                            ,[Teste01]
+                            ,[Teste02]
+                    FROM [Teste2]
+                ''' )
                 result = []
-                for row in cursor.fetchall(): 
-                    p = self.model(TimeStamp=row[0], Teste01=row[1], Teste02=row[2])
+                for row in cursor.fetchall():
+                    p = self.model(
+                        TimeStamp=row[0], Teste01=row[1], Teste02=row[2])
                     result.append(p)
             finally:
-                cursor.close() 
+                cursor.close()
 
         return result
